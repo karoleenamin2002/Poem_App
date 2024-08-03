@@ -102,9 +102,7 @@ class _PoemState extends State<Poem> {
               children: [
                 FloatingActionButton(
                   backgroundColor: Colors.orange,
-                  onPressed: () {
-                    changeindex("left");
-                  },
+                  onPressed: () {changeindex("left");},
                   child: Icon(
                     Icons.arrow_left,
                     size: 60,
