@@ -53,6 +53,27 @@ class _PoemState extends State<Poem> {
       "line2": "أم التّعازي بَدِيلٌ إنْ هَوَى العَلَمُ"
     },
   ];
+
+  changeindex(String direction) {
+    if (direction == "left") {
+      setState(() {
+        if (index == 0) {
+          index = verse.length - 1;
+        } else {
+          index--;
+        }
+      });
+    } else if (direction == "right") {
+      setState(() {
+        if (index == verse.length - 1) {
+          index = 0;
+        } else {
+          index++;
+        }
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,13 +103,7 @@ class _PoemState extends State<Poem> {
                 FloatingActionButton(
                   backgroundColor: Colors.orange,
                   onPressed: () {
-                    setState(() {
-                      if (index == 0) {
-                        index = verse.length-1;
-                      } else {
-                        index--;
-                      }
-                    });
+                    changeindex("left");
                   },
                   child: Icon(
                     Icons.arrow_left,
@@ -101,13 +116,7 @@ class _PoemState extends State<Poem> {
                 FloatingActionButton(
                   backgroundColor: Colors.orange,
                   onPressed: () {
-                    setState(() {
-                      if (index== verse.length - 1) {
-                        index = 0;
-                      } else {
-                        index++;
-                      }
-                    });
+                    changeindex("right");
                   },
                   child: Icon(
                     Icons.arrow_right,
