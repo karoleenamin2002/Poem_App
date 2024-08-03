@@ -55,22 +55,26 @@ class _PoemState extends State<Poem> {
   ];
 
   changeindex(String direction) {
-    if (direction == "left") {
-      setState(() {
-        if (index == 0) {
-          index = verse.length - 1;
-        } else {
-          index--;
-        }
-      });
-    } else if (direction == "right") {
-      setState(() {
-        if (index == verse.length - 1) {
-          index = 0;
-        } else {
-          index++;
-        }
-      });
+    switch (direction) {
+      case "left":
+        setState(() {
+          if (index == 0) {
+            index = verse.length - 1;
+          } else {
+            index--;
+          }
+        });
+
+        break;
+      case "right":
+        setState(() {
+          if (index == verse.length - 1) {
+            index = 0;
+          } else {
+            index++;
+          }
+        });
+        break;
     }
   }
 
@@ -102,7 +106,9 @@ class _PoemState extends State<Poem> {
               children: [
                 FloatingActionButton(
                   backgroundColor: Colors.orange,
-                  onPressed: () {changeindex("left");},
+                  onPressed: () {
+                    changeindex("left");
+                  },
                   child: Icon(
                     Icons.arrow_left,
                     size: 60,
